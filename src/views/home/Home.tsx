@@ -17,8 +17,11 @@ function Home() {
       <h1>Home</h1>
       {
         homeList &&
-        homeList.map((item: any) => {
-          return <div key={item.id}>{item.title}</div>
+        homeList.map((item: any, index: any) => {
+          return <div key={index}>
+            <h2>{item.name}</h2>
+            <a href={item.url}>{item.url}</a>
+          </div>
         })
       }
       <button onClick={
@@ -26,6 +29,11 @@ function Home() {
           dispatch(resetHome())
         }
       }>Clear Home</button>
+      <button onClick={
+        () => {
+          dispatch(fetchHome())
+        }
+      }>Fetch Home</button>
     </div>
   );
 }

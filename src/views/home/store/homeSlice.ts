@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { getPokemons } from '../../../common/apis/pokemon'
 
 // actions
 export const resetHome = () => async (dispatch: any) => {
@@ -6,20 +7,8 @@ export const resetHome = () => async (dispatch: any) => {
 }
 
 export const fetchHome = () => async (dispatch: any) => {
-  setTimeout(() => {
-    dispatch(setHomeData([
-      {
-        id: 1,
-        title: 'title 1',
-        content: 'content 1',
-      },
-      {
-        id: 2,
-        title: 'title 2',
-        content: 'content 2',
-      },
-    ]))
-  }, 5000)
+  const result = await getPokemons()
+  dispatch(setHomeData(result))
 }
 
 //reducer
